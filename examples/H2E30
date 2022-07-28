@@ -1,0 +1,19 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E30()
+print "Example: H2E30";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C1 := Z2Z4HadamardCode(2, 4);
+CoveringRadiusBounds(C1);
+CoveringRadius(C1);
+
+C2 := ExtendCode(Z2Z4ReedMullerCode(1, 2, 4));
+CoveringRadiusBounds(C2);
+CoveringRadius(C2);
+
+C3 := Z2Z4HadamardCode(2, 5);
+CoveringRadius(C3 : MaximumTime := 60);
+CoveringRadiusBounds(C3);
+
+SetEchoInput(ei);

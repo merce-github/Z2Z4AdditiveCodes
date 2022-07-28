@@ -1,0 +1,17 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E24()
+print "Example: H2E24";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R := RSpace(IntegerRing(4), 4);
+u := R![2,1,2,3];
+v := R![0,0,2,1];
+Distance(u, v);
+Distance(u, v) eq Weight(u-v);
+LeeDistance(u, v, 1);
+LeeDistance(u, v, 1) eq LeeWeight(u-v, 1);
+LeeDistance(u, v, 0) eq LeeDistance(u, v);
+LeeWeight(u, 0) eq LeeWeight(u);
+
+SetEchoInput(ei);

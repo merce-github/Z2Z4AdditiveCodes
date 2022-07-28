@@ -1,0 +1,16 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E7()
+print "Example: H2E7";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+F := Z2Z4ReedMullerCodes(0, 3 : OverZ4 := true);
+F eq [Z2Z4ReedMullerCode(0, r, 3 : OverZ4 := true) :  r in [0..3]];
+(F[1] subset F[2]) and (F[2] subset F[3]) and (F[3] subset F[4]);
+
+AF := Z2Z4ReedMullerCodes(0, 3);
+AF eq [Z2Z4ReedMullerCode(0, r, 3) :  r in [0..3]];
+(AF[1] subset AF[2]) and (AF[2] subset AF[3]) and (AF[3] subset AF[4]);
+
+SetEchoInput(ei);
+

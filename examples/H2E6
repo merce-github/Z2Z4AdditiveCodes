@@ -1,0 +1,25 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E6()
+print "Example: H2E6";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C1 := Z2Z4ReedMullerCode(1, 1, 4 : OverZ4 := true);
+C2 := Z2Z4ReedMullerCode(1, 2, 4 : OverZ4 := true);
+C1;
+C1 subset C2;
+DualKroneckerZ4(C2`Code) eq C1`Code;
+C1`Code eq HadamardCodeZ4(2, 4);
+C2`Code eq ExtendedPerfectCodeZ4(2, 4);
+
+C1 := Z2Z4ReedMullerCode(1, 1, 4);
+C2 := Z2Z4ReedMullerCode(1, 2, 4);
+C1;
+C1 subset C2;
+C1 eq Z2Z4HadamardCode(1, 4);
+C2b := Z2Z4ExtendedPerfectCode(1, 4);
+C2 eq C2b;
+Z2Z4Type(C2) eq Z2Z4Type(C2b);
+LeeWeightDistribution(C2) eq LeeWeightDistribution(C2b);
+
+SetEchoInput(ei);

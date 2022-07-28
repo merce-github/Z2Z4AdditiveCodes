@@ -1,0 +1,18 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H1E3 ()
+print "Example: H1E3";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+a := 2; b := 3;
+U := Z2Z4AdditiveUniverseCode(a, b);
+Z := Z2Z4AdditiveZeroCode(a, b);
+R := RandomZ2Z4AdditiveCode(a, b);
+E := Z2Z4AdditiveEvenWeightCode(a, b);
+(Z subset R) and (R subset U);
+(Z subset E) and (E subset U);
+_, binaryE := HasLinearGrayMapImage(E);
+binaryE eq EvenWeightCode(a + 2*b);
+
+SetEchoInput(ei);
+

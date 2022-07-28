@@ -1,0 +1,31 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E34()
+print "Example: H2E34";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4HadamardCode(2, 5);
+C;
+
+alpha := C`Alpha;
+beta := Length(C) - alpha;
+d := Z2Z4MinimumLeeDistance(C);
+t := Floor((d-1)/2);
+t;
+
+c := C![0,0,2,2,0,0,2,2,1,1,0,1,2,3,1,1,0,1,2,3];
+c in C;
+u := c;
+u[5] := u[5] + 2;
+u[12] := u[12] + 1;
+u[13] := u[13] + 3;
+u[16] := u[16] + 2;
+u;
+grayMap := GrayMap(Z2Z4AdditiveUniverseCode(alpha, beta));
+grayMap(c-u);
+
+isDecoded, uDecoded := CosetDecode(C, u : MinWeightCode := d);
+isDecoded;
+uDecoded eq c;
+
+SetEchoInput(ei);

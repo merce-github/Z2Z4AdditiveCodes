@@ -1,0 +1,17 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E2 ()
+print "Example: H2E2";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+B := RandomLinearCode(GF(2), 7, 3);
+B;
+B_add := Z2Z4AdditiveCode(B);
+B_add;
+Q := RandomLinearCode(IntegerRing(4), 5, 2);
+Q;
+Q_add := Z2Z4AdditiveCode(Q);
+Q_add;
+
+SetEchoInput(ei);
+

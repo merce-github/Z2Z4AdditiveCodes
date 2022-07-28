@@ -1,0 +1,29 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E23()
+print "Example: H2E23";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R := RSpace(IntegerRing(4), 6);
+C := Z2Z4AdditiveCode([R![2,0,0,2,0,2],
+                       R![0,2,0,3,1,1],
+                       R![0,0,1,3,0,2]], 2);
+
+G := MinRowsGeneratorMatrix(C);
+i := RSpace(IntegerRing(4),3)![2,1,3];
+c := Z2Z4Mult(i, G, Z2Z4Type(C)[3]);
+c;
+c in C;
+Z2Z4Mult(i, G, Z2Z4Type(C)[3]) eq i*G;
+
+H := MinRowsParityCheckMatrix(C);
+Z2Z4Mult(c, Transpose(H), C`Alpha);
+Z2Z4Mult(c, Transpose(H), C`Alpha) eq c*Transpose(H);
+u := c;
+u[2] := u[2] + 2;
+u[4] := u[4] + 3;
+Z2Z4Mult(u, Transpose(H), C`Alpha);
+Z2Z4Mult(u, Transpose(H), C`Alpha) eq u*Transpose(H);
+
+SetEchoInput(ei);
+

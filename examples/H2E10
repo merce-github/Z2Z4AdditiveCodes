@@ -1,0 +1,25 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E10()
+print "Example: H2E10";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4HadamardCode(2, 5);
+D := Dual(C);
+typeC := Z2Z4Type(C);
+typeD := Z2Z4Type(D);
+typeD eq Z2Z4DualType(C);
+typeD[1] eq typeC[1];
+typeD[2] eq typeC[2];
+typeD[3] eq typeC[1]+typeC[3]-2*typeC[5];
+typeD[4] eq typeC[2]-typeC[3]-typeC[4]+typeC[5];
+typeD[5] eq typeC[1]-typeC[5];
+
+G, gamma, delta := MinRowsParityCheckMatrix(C);
+Nrows(G) eq gamma+delta;
+gamma eq typeD[3];
+delta eq typeD[4];
+
+Hull(C) eq (C meet D);
+
+SetEchoInput(ei);

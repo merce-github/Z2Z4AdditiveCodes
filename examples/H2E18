@@ -1,0 +1,35 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E18()
+print "Example: H2E18";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+M1 := Matrix(Integers(4), [[0,2,2,1,3,1], [0,0,0,2,2,2]]);
+C1 := Z2Z4AdditiveCode(M1, 3);
+HasLinearGrayMapImage(C1);
+DimensionOfSpanZ2(C1) eq DimensionOfKernelZ2(C1);
+S, Sb := SpanZ2Code(C1);
+K, Kb := KernelZ2Code(C1);
+(K eq C1) and (C1 eq S);
+Kb eq Sb;
+M2 := Matrix(Integers(4),[[2,0,0,0,0,0,0,0,0,0,0,2],
+                            [0,2,0,0,0,0,0,0,0,0,0,2],
+                            [0,0,2,0,0,0,0,0,0,0,0,2],
+                            [0,0,0,2,0,0,0,0,0,0,0,2],
+                            [0,0,0,0,2,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,2,0,0,0,0,0,2],
+                            [0,0,0,0,0,0,1,0,0,0,0,1],
+                            [0,0,0,0,0,0,0,1,0,1,0,0],
+                            [0,0,0,0,0,0,0,0,1,0,0,1],
+                            [0,0,0,0,0,0,0,0,0,2,0,2],
+                            [0,0,0,0,0,0,0,0,0,0,1,2]]);
+C2 := Z2Z4AdditiveCode(M2, 6);
+HasLinearGrayMapImage(C2);
+DimensionOfSpanZ2(C2) eq DimensionOfKernelZ2(C2);
+S, Sb := SpanZ2Code(C2);
+K, Kb := KernelZ2Code(C2);
+(K subset C2) and (C2 subset S);
+Kb subset Sb;
+
+SetEchoInput(ei);
+

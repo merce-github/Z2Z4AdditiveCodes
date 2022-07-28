@@ -1,0 +1,24 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E22()
+print "Example: H2E22";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R2 := RSpace(IntegerRing(2), 1);
+R4 := RSpace(IntegerRing(4), 3);
+R2R4 := CartesianProduct(R2, R4);
+C := Z2Z4AdditiveCode([R2R4!<R2![1], R4![0,0,2]>,
+                       R2R4!<R2![0], R4![1,0,3]>,
+                       R2R4!<R2![0], R4![0,1,3]>]);
+u := FromZ4toZ2Z4(C![2,0,0,2], 1);
+v := FromZ4toZ2Z4(C![0,1,0,3], 1);
+u; v;
+u + v;
+2*v;
+u+v in C;
+Z2Z4InnerProduct(u, v);
+Support(u);
+Coordinates(C, u+2*v);
+Parent(u) eq R2R4;
+
+SetEchoInput(ei);

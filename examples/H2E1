@@ -1,0 +1,37 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E1 ()
+print "Example: H2E1";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+Z4 := IntegerRing(4);
+R  := RSpace(Z4, 5);
+C1 := Z2Z4AdditiveCode([R![2,2,1,1,3], R![0,2,1,2,1],
+                        R![2,2,2,2,2], R![2,0,1,1,1]], 2);
+C1;
+A  := Matrix(Z4, [[2,2,1,1,3], 
+                  [0,2,1,2,1], 
+                  [2,2,2,2,2], 
+                  [2,0,1,1,1]]);
+C2 := Z2Z4AdditiveCode(A, 2);
+C2;
+C1 eq C2;
+
+C1b := Z2Z4AdditiveCode([R![1,1,1,1,3], R![0,1,1,2,1], 
+                         R![1,1,2,2,2], R![1,0,1,1,1]], 2);
+Ab  := Matrix(Z4, [[1,1,1,1,3],
+                   [0,1,1,2,1],
+                   [1,1,2,2,2],
+                   [1,0,1,1,1]]);
+C2b := Z2Z4AdditiveCode(Ab, 2);
+(C1 eq C1b) and (C2 eq C2b);
+
+R2 := RSpace(IntegerRing(2), 2);
+R4 := RSpace(IntegerRing(4), 3);
+R2R4 := CartesianProduct(R2, R4);
+T := [R2R4!<R2![1,1], R4![1,1,3]>, R2R4!<R2![0,1], R4![1,2,1]>,
+      R2R4!<R2![1,1], R4![2,2,2]>, R2R4!<R2![1,0], R4![1,1,1]>];
+C1car := Z2Z4AdditiveCode(T);
+C1 eq C1car;
+
+SetEchoInput(ei);

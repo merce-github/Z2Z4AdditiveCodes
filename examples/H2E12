@@ -1,0 +1,31 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E12()
+print "Example: H2E12";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4HadamardCode(2, 4);
+C;
+
+V4, V2, f, fbin := InformationSpace(C);
+G := MinRowsGeneratorMatrix(C); 	
+
+(#V4 eq #C`Code) and (#V2 eq #C`Code);
+Set([f(i) : i in V4]) eq Set(C);
+Set([Z2Z4Mult(i, G, Z2Z4Type(C)[3]): i in V4]) eq Set(C);
+Set([i*G : i in V4]) eq Set(C);
+
+i := V4![2,3,1];
+c := f(i);
+c;
+c in C;
+c eq Z2Z4Mult(i, G, Z2Z4Type(C)[3]);
+c eq i*G;
+
+ibin := V2![1,1,0,0,1];
+ibin eq GrayMap(Z2Z4AdditiveUniverseCode(1, 2))(i);
+cbin := fbin(ibin);
+cbin;
+cbin eq GrayMap(C)(c);
+
+SetEchoInput(ei);

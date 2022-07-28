@@ -1,0 +1,22 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E15()
+print "Example: H2E15";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R := RSpace(IntegerRing(4), 8);
+C := Z2Z4AdditiveCode([R![0,0,2,1,1,1,2,1], R![0,0,0,2,0,1,3,1],
+                       R![0,0,0,0,2,1,3,1], R![0,2,2,0,0,2,2,0],
+                       R![2,2,0,0,1,2,0,2]], 3);
+C;
+C_SF, f, G_SF, p := StandardForm(C);
+G_SF;
+IsStandardFormMatrix(G_SF, Z2Z4Type(C));
+C eq C_SF;
+C_SF eq Z2Z4AdditiveCode(G_SF, C`Alpha);
+C`Code^p eq C_SF`Code;
+{f(c) : c in C`Code} eq Set(C_SF`Code);
+{c^p : c in C`Code} eq Set(C_SF`Code);
+
+SetEchoInput(ei);
+

@@ -1,0 +1,35 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E14()
+print "Example: H2E14";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4ExtendedPerfectCode(2, 5);
+C;
+alpha := C`Alpha;
+beta := Length(C) - alpha;
+V4, V2, f, fbin := InformationSpace(C);
+V4s, V2s := SyndromeSpace(C);	
+#V4 * #V4s eq 2^alpha * 4^beta;
+#V2 * #V2s eq 2^alpha * 4^beta;
+
+i := V4![2,0,2,0,2,0,1,3,0,0,0,1,3,0,0,0];
+c := f(i);
+c;
+u := c;
+u[11] := u[11] + 3;
+u;
+
+s := Syndrome(u, C);
+s in V4s;
+H := MinRowsParityCheckMatrix(C);
+s eq Z2Z4Mult(u, Transpose(H), alpha);
+s eq u*Transpose(H);
+
+L, mapCosetLeaders := CosetLeaders(C);
+errorVector := mapCosetLeaders(s);
+errorVector;
+errorVector in L;
+u-errorVector eq c;
+
+SetEchoInput(ei);

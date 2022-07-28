@@ -1,0 +1,18 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E26()
+print "Example: H2E26";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R := RSpace(IntegerRing(4), 5);
+C := Z2Z4AdditiveCode([R![2,2,2,0,0], R![0,0,0,2,0], R![0,2,1,0,1]], 2);
+C;
+
+IsSelfOrthogonal(C);
+IsSelfDual(C);
+C eq Dual(C);
+IsSeparable(C);
+IsAntipodal(C);
+IsCyclic(C);
+
+SetEchoInput(ei);

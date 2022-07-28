@@ -1,0 +1,36 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E35()
+print "Example: H2E35";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4HadamardCode(2, 4);
+C;
+
+alpha := C`Alpha;
+beta := Length(C) - alpha;
+t := Floor((Z2Z4MinimumLeeDistance(C)-1)/2);
+t;
+
+V4, V2, f, fbin := InformationSpace(C);
+i := V4![2,1,0];
+c := f(i);
+c;
+u := c;
+u[2] := u[2] + 2;
+u[7] := u[7] + 3;
+u[9] := u[9] + 1;
+u;
+grayMap := GrayMap(Z2Z4AdditiveUniverseCode(alpha, beta));
+grayMap(c-u);
+
+isDecoded, uDecoded := SyndromeDecode(C, u);
+isDecoded;
+uDecoded eq c;
+
+L, mapCosetLeaders := CosetLeaders(C);
+errorVector := mapCosetLeaders(Syndrome(u, C));
+errorVector;
+u-errorVector eq c;
+
+SetEchoInput(ei);

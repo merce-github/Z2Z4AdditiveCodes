@@ -1,0 +1,30 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E5()
+print "Example: H2E5";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C, Gc := Z2Z4HadamardCode(3, 5 : OverZ4 := true);
+C`Alpha;
+(C`Code eq HadamardCodeZ4(3, 5)) and (C`Code eq LinearCode(Gc));
+HasLinearGrayMapImage(C);
+n := BinaryLength(C);
+(Z2Z4MinimumLeeDistance(C) eq n/2) and (#C eq 2*n);
+
+C, Gc := Z2Z4HadamardCode(2, 5);
+C`Alpha;
+C eq Z2Z4AdditiveCode(LinearCode(Gc), C`Alpha);
+HasLinearGrayMapImage(C);
+n := BinaryLength(C);
+(Z2Z4MinimumLeeDistance(C) eq n/2) and (#C eq 2*n);
+
+C, Gc := Z2Z4HadamardCode(2, 5);	
+D, Gd := Z2Z4ExtendedPerfectCode(2, 5);	
+D eq Dual(C);
+Gc eq Gd;
+n := BinaryLength(D);
+#D eq 2^(n-1-Log(2,n));
+Z2Z4MinimumLeeDistance(D) eq 4;
+
+SetEchoInput(ei);
+

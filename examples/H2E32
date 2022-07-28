@@ -1,0 +1,15 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E32()
+print "Example: H2E32";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R  := RSpace(IntegerRing(4), 4);
+C  := Z2Z4AdditiveCode([R![2,0,0,2], R![0,1,0,3], R![0,0,1,3]], 1);
+C1 := Subcode(C, 1, 0);
+C2 := Subcode(C, 0, 1);
+C3 := Subcode(C, 1, 1);
+(C1 + C2) eq C3;
+(C1 meet C3) eq C1;
+
+SetEchoInput(ei);

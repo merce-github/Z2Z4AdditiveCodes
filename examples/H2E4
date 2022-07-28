@@ -1,0 +1,66 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E4()
+print "Example: H2E4";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+PR2<x> := PolynomialRing(Integers(2));
+PR4<y> := PolynomialRing(Integers(4));
+alpha := 15;
+beta := 7;
+
+p := x^5+x^3+x+1;
+l := x^4+x^3+1;
+f := PR4!1;
+h := y^4+y^3+3*y^2+2*y+1;
+C1 := Z2Z4CyclicCode(alpha, beta, p, l, f, h);
+C2 := Z2Z4CyclicCode(alpha, beta, [<p, PR4!0>, <l, f*h + 2*f>]);
+C1 eq C2;
+IsCyclic(C1);
+
+R := RSpace(Integers(4), alpha + beta);
+g1 := R!([2*(Coefficient(PR4!p, i)) : i in [0 .. alpha - 1]]
+           cat [Integers(4)!0 : j in [0 .. beta - 1]]);
+g1;
+g2 := R!([2*(Coefficient(PR4!l, i)) : i in [0 .. alpha - 1]]
+           cat [Coefficient(f*h + 2*f, j) : j in [0 .. beta - 1]]);
+g2;
+C3 := Z2Z4CyclicCode(alpha, [g1, g2]);
+C1 eq C3;
+
+R2 := RSpace(Integers(2), alpha);
+R4 := RSpace(Integers(4), beta);
+R2R4 := CartesianProduct(R2, R4);
+g3 := R2R4!<[Coefficient(PR4!p, i) : i in [0 .. alpha - 1]],
+            [Integers(4)!0 : j in [0 .. beta - 1]]>;
+g3;
+g4 := R2R4!<[Coefficient(PR4!l, i) : i in [0 .. alpha - 1]],
+            [Coefficient(f*h + 2*f, j) : j in [0 .. beta - 1]]>;
+g4;
+C4 := Z2Z4CyclicCode([g3, g4]);
+C1 eq C4;
+
+C5 := Z2Z4CyclicCode(alpha, g1);
+C6 := Z2Z4CyclicCode(alpha, g2);
+(C5 subset C4) and (C6 subset C4);
+C5 eq Z2Z4CyclicCode(g3);
+C6 eq Z2Z4CyclicCode(g4);
+
+G := MinRowsGeneratorMatrix(C1);
+v := Eltseq(G[1]);
+v;
+u := Rotate(v[1..alpha], 3) cat Rotate(v[alpha+1..alpha+beta], 3);
+u;
+R!u in C1;
+
+v := FromZ4toZ2Z4(G[1], alpha);
+v;
+u := Rotate(v, 3);
+u;
+u in C1;
+
+C7 := RandomZ2Z4CyclicCode(alpha, beta);
+IsZ2Z4AdditiveCode(C7) and IsCyclic(C7);
+(Z2Z4Type(C7)[1] eq alpha) and (Z2Z4Type(C7)[2] eq beta);
+
+SetEchoInput(ei);

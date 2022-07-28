@@ -1,0 +1,13 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E29()
+print "Example: H2E29";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C := Z2Z4HadamardCode(2, 5);
+LeeWeightDistribution(C);
+Z2Z4MinimumLeeWeight(C) eq LeeWeightDistribution(C)[2][1];
+DualLeeWeightDistribution(C) eq LeeWeightDistribution(Dual(C));
+ExternalDistance(C) eq #DualLeeWeightDistribution(C)-1;
+
+SetEchoInput(ei);

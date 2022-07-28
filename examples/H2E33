@@ -1,0 +1,21 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H1E33()
+print "Example: H1E33";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+C1 := RandomZ2Z4AdditiveCode(2, 3);
+C2 := RandomZ2Z4AdditiveCode(1, 4);
+Length(C1);
+Length(C2);
+
+C3 := DirectSum(C1, C2);
+Length(C3);
+C4 := Concatenation(C1, C2);
+Length(C4);
+C4 subset C3;
+
+C5 := PunctureCode(C1, 3);
+Length(C5);
+
+SetEchoInput(ei);

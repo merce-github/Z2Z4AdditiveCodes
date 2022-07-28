@@ -1,0 +1,43 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E28()
+print "Example: H2E28";
+ei := GetEchoInput();
+SetEchoInput(true);
+SetVerbose("IgnoreWeightAttributes", 1);
+
+C := Z2Z4HadamardCode(3, 11);
+#C;
+time Z2Z4MinimumLeeWeight(C : Method := "Distribution");
+time Z2Z4MinimumLeeWeight(C : Method := "KernelCosets");
+time Z2Z4MinimumLeeWeight(C : Method := "Brouwer");
+time Z2Z4MinimumLeeWeight(C : Method := "Zimmermann");
+time Z2Z4MinimumLeeWeight(C : Method := "Quaternary");
+C := Z2Z4ExtendedPerfectCode(2, 5);
+#C;
+time Z2Z4MinimumLeeWeight(C : Method := "Distribution");
+time Z2Z4MinimumLeeWeight(C : Method := "KernelCosets");
+time Z2Z4MinimumLeeWeight(C : Method := "Brouwer");
+time Z2Z4MinimumLeeWeight(C : Method := "Zimmermann");
+time Z2Z4MinimumLeeWeight(C : Method := "Quaternary");
+C := Z2Z4ExtendedPerfectCode(2, 6);
+#C;
+time Z2Z4MinimumLeeWeight(C : Method := "KernelCosets");
+time Z2Z4MinimumLeeWeight(C : Method := "Brouwer");
+time Z2Z4MinimumLeeWeight(C : Method := "Zimmermann");
+time Z2Z4MinimumLeeWeight(C : Method := "Quaternary");
+C := Z2Z4ReedMullerCode(2, 2, 6);
+#C;
+time Z2Z4MinimumLeeWeight(C : Method := "Distribution");
+time Z2Z4MinimumLeeWeight(C : Method := "KernelCosets");
+time Z2Z4MinimumLeeWeight(C : Method := "Brouwer");
+time Z2Z4MinimumLeeWeight(C : Method := "Zimmermann");
+time Z2Z4MinimumLeeWeight(C : Method := "Quaternary");
+
+C := Z2Z4HadamardCode(2, 5);
+Z2Z4MinimumLeeWeight(C) eq LeeWeight(MinimumWord(C), C`Alpha);
+MinimumWord(C) in MinimumWords(C);
+LeeWeightDistribution(C);
+MinimumWords(C) eq MinimumWords(C : NumWords := 62);
+
+SetVerbose("IgnoreWeightAttributes", 0);
+SetEchoInput(ei);

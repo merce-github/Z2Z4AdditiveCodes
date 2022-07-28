@@ -1,0 +1,18 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E25()
+print "Example: H2E25";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+R2 := RSpace(IntegerRing(2), 1);
+R4 := RSpace(IntegerRing(4), 3);
+R2R4 := CartesianProduct(R2, R4);
+u := FromZ4toZ2Z4(RSpace(Integers(4), 4)![2,1,2,3], 1);
+v := FromZ4toZ2Z4(RSpace(Integers(4), 4)![0,0,2,1], 1);
+u; v;
+Distance(u, v);
+Distance(u, v) eq Weight(u-v);
+LeeDistance(u, v);
+LeeDistance(u, v) eq LeeWeight(u-v);
+
+SetEchoInput(ei);

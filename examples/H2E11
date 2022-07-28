@@ -1,0 +1,35 @@
+// original file: Z2Z4-AdditiveCodes
+// Example: H2E11()
+print "Example: H2E11";
+ei := GetEchoInput();
+SetEchoInput(true);
+
+PR2<x> := PolynomialRing(Integers(2));
+PR4<y> := PolynomialRing(Integers(4));
+alpha := 15;
+beta := 7;
+
+U := Z2Z4AdditiveUniverseCode(alpha, beta);
+Z := Z2Z4AdditiveZeroCode(alpha, beta);
+IsCyclic(U);
+IsCyclic(Z);
+GeneratorPolynomials(U);
+GeneratorPolynomials(Z);
+
+a1 := x^6+x^4+x^2+x;
+a2 := x^5+x^4+x;
+b1 := PR4!0;
+b2 := y^5+y^4+3*y^3+2*y^2+3*y;
+C1 := Z2Z4CyclicCode(alpha, beta, [<a1, b1>, <a2, b2>]);
+GeneratorPolynomials(C1);
+p := x^5+x^3+x+1;
+l := x^4+x^3+1;
+f := PR4!1;
+h := y^4+y^3+3*y^2+2*y+1;
+C2 := Z2Z4CyclicCode(alpha, beta, [<p, PR4!0>, <l, f*h + 2*f>]);
+C1 eq C2;
+
+DualGeneratorPolynomials(C2) eq DualGeneratorPolynomials(alpha, beta, p, l, f, h);
+DualGeneratorPolynomials(C2) eq GeneratorPolynomials(Dual(C2));
+
+SetEchoInput(ei);

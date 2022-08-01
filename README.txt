@@ -34,8 +34,7 @@ directories:
       "ZZZ4StandardForm.m", "Z2Z4MinimumWeight.m", "Z2Z4Cyclic.m", 
       "Z2Z4CoveringRadius.m", "Z2Z4CodeConstructions" and
       "Z2Z4Decode.m".
-/license: The license of the package.
-/doc: The manual to use the package in pdf format.
+/docs: The manual to use the package in pdf format.
 /examples: Examples  from  the  manual.  They can  be loaded in
            Magma as soon as the package is attached.
 /test: Some test files that can be used to check the package.

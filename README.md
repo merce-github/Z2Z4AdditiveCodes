@@ -8,7 +8,7 @@ be calculated.
 
 "Z2Z4-Additive Codes"  consists  of five  files  written in the 
 Magma language. Please send your  bug reports to Combinatorics, 
-Coding and  Security Group (CCSG)  at [ccsg@eines.uab.cat](mailto:ccsg@eines.uab.cat)
+Coding and  Security Group (CCSG)  at [ccsg@eines.uab.es](mailto:ccsg@eines.uab.es)
 or if it is a Magma problem to magma-trouble (magma@maths.usyd.edu.au). See section [Bug reports](#bug-reports) below.
 
 "Z2Z4-Additive Codes" was originally written in Magma by Bernat
@@ -102,7 +102,7 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
 
 ## Bug reports
 
-When  sending a  bug  report to [ccsg@eines.uab.cat](ccsg@eines.uab.cat) or to
+When  sending a  bug  report to [ccsg@eines.uab.es](ccsg@eines.uab.es) or to
 magma@maths.usyd.edu.au,    remember we will need to be able to
 reproduce the problem; so please include:
 

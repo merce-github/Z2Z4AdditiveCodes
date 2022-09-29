@@ -49,31 +49,27 @@ in the Magma command line.
 
 To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
 
-1. Unpack the archive file in a directory $DIR.
+1. Unpack the archive file in a directory <code>$DIR</code>.
 
-2. If you do not have a directory to store user-defined packages, create one in your preferred location, for instance $HOME:
+2. If you do not have a directory to store user-defined packages, create one in your preferred location, for instance <code>$HOME</code>:
 
    ```
       mkdir UserPackages
    ```
 
-3. Create a new directory in the $HOMe/UserPackages directory:
+   If you already have such a directory, proceed with the instructions changing <code>$HOME/UserPackages</code> by the path to your directory.
+
+3. Create a new directory in the <code>$HOME/UserPackages</code> directory:
 
    ```
       cd UserPackages
       mkdir Z2Z4AdditiveCodes
-      {
-         +Z2Z4AdditiveCodes.spec
-      }
    ```
-
-   In case that the spec file already exists, add the lines above at the end of the old spec file.
 
 4. Copy all files in <code>$DIR/src/</code> into this new directory <code>Z2Z4AdditiveCodes</code>:
 
    ```
-      cd UserPackages
-      mkdir Z2Z4AdditiveCodes
+      cp $DIR/src/* $HOME/UserPackages/Z2Z4AdditiveCodes/
    ```
 
 5. Create a file named <code>spec</code> in the directory <code>$HOME/UserPackages</code>:
@@ -85,10 +81,10 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
    Edit the <code>spec</code> file and add the following content:
 
    ```
-   Z2Z4AdditiveCodes
-   {
-      +Z2Z4AdditiveCodes.spec
-   }
+      Z2Z4AdditiveCodes
+      {
+         +Z2Z4AdditiveCodes.spec
+      }
    ```
 
    In case that the <code>spec</code> file already exists, add the lines above at the end of the old <code>spec</code> file.
@@ -136,7 +132,7 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
       [2,1]
    ```
 
-   If the numbers appear but are different from the ones shown above, then the respective files have not been installed correctly and the may correspond to a previous version.
+   If the numbers appear but are different from the ones shown above, then the respective files have not been installed correctly and they may correspond to a previous version.
 
 ## Bug reports
 

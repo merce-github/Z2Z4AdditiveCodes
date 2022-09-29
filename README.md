@@ -24,14 +24,14 @@ This version of the package has been developped in Magma version
 
 ## Composition of the package
 
-The   "Z2Z4-Additive  Codes"   package  is  composed  of  five
+The   "Z2Z4-Additive  Codes"   package  is  composed  of  four
 directories:
 
 * [/src](src): The files to attach to Magma “Z2Z4AdditiveCodes.m”,
       "ZZZ4StandardForm.m", "Z2Z4MinimumWeight.m", "Z2Z4Cyclic.m", 
       "Z2Z4CoveringRadius.m", "Z2Z4CodeConstructions" and
       "Z2Z4Decode.m".
-* [/docs](docs): The manual to use the package in pdf format.
+* [/docs](docs): The manual to use the package, in pdf format.
 * [/examples](examples): Examples  from  the  manual.  They can  be loaded in
            Magma as soon as the package is attached.
 * [/test](test): Some test files that can be used to check the package.
@@ -49,55 +49,94 @@ in the Magma command line.
 
 To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
 
-1. Unpack the archive file in a directory.
+1. Unpack the archive file in a directory $DIR.
 
-2. Enter  to  the  directory  where  Magma  is installed, go to
-   package directory    <code>$PATHMAGMA/package/</code>    and create a new
-   directory.
-```
-    mkdir Z2Z4AdditiveCodes
-```
+2. If you do not have a directory to store user-defined packages, create one in your preferred location, for instance $HOME:
 
-3. Copy <code>$PATH/src/Z2Z4AdditiveCodes.spec</code> <code>$PATH/src/Z2Z4AdditiveCodes.m</code> <code>$PATH/src/Z2Z4StandardForm.m</code>
-   <code>$PATH/src/Z2Z4MinimumWeight.m</code> <code>$PATH/src/Z2Z4Cyclic.m</code>
-   <code>$PATH/src/Z2Z4CoveringRadius.m</code>
-   <code>$PATH/src/Z2Z4CodeConstructions.m</code> and
-   <code>$PATH/src/Z2Z4Decode.m</code>
-   to the Magma directory <code>$PATHMAGMA/package/Z2Z4AdditiveCodes/</code>
-```
-   cp $PATH/src/Z2Z4AdditiveCodes.spec
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
+   ```
+      mkdir UserPackages
+   ```
 
-   cp $PATH/src/Z2Z4AdditiveCodes.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-			
-   cp $PATH/src/Z2Z4StandardForm.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
+3. Create a new directory in the $HOMe/UserPackages directory:
 
-   cp $PATH/src/Z2Z4MinimumWeight.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-
-   cp $PATH/src/Z2Z4Cyclic.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-
-   cp $PATH/src/Z2Z4CoveringRadius.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-
-   cp $PATH/src/Z2Z4CodeConstructions.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-
-   cp $PATH/src/Z2Z4Decode.m
-			  $PATHMAGMA/package/Z2Z4AdditiveCodes/
-```
-4. Edit the file      <code>$PATHMAGMA/package/spec</code>     and write the
-   following lines at the end:
-```
-      Z2Z4AdditiveCodes
+   ```
+      cd UserPackages
+      mkdir Z2Z4AdditiveCodes
       {
          +Z2Z4AdditiveCodes.spec
       }
-````
+   ```
 
+   In case that the spec file already exists, add the lines above at the end of the old spec file.
+
+4. Copy all files in <code>$DIR/src/</code> into this new directory <code>Z2Z4AdditiveCodes</code>:
+
+   ```
+      cd UserPackages
+      mkdir Z2Z4AdditiveCodes
+   ```
+
+5. Create a file named <code>spec</code> in the directory <code>$HOME/UserPackages</code>:
+
+   ```
+      touch spec
+   ```
+
+   Edit the <code>spec</code> file and add the following content:
+
+   ```
+   Z2Z4AdditiveCodes
+   {
+      +Z2Z4AdditiveCodes.spec
+   }
+   ```
+
+   In case that the <code>spec</code> file already exists, add the lines above at the end of the old <code>spec</code> file.
+
+6. Ensure that all files have the correct permissions:
+
+   ```
+      chmod -R a+rX .
+   ```
+
+7. Set the environment variable <code>MAGMA_USER_SPEC</code> to the <code>spec</code> file. Change to the directory where Magma is installed and edit the <code>magma</code> script. Locate the line
+
+   ```
+      export MAGMA_SYSTEM_SPEC
+   ```
+
+   and add the following lines just after that:
+
+   ```
+      MAGMA_USER_SPEC="$HOME/UserPackages/spec"
+      export MAGMA_USER_SPEC
+   ```
+
+8. In order to check that the package has been installed correctly, run Magma in a terminal window and try to run the following lines:
+
+   ```
+      Z2Z4AdditiveCodes_version();
+      Z2Z4CodeConstructions_version();
+      Z2Z4CoveringRadius_version();
+      Z2Z4Cyclic_version();
+      Z2Z4Decode_version();
+      Z2Z4MinimumWeight_version();
+      Z2Z4StandardForm_version();
+   ```
+   
+   If the installation has been successful, Magma should return the following lines, one for each function, respectively:
+
+   ```
+      [4,6]
+      [1,3]
+      [1,5]
+      [1,5]
+      [2,2]
+      [2,4]
+      [2,1]
+   ```
+
+   If the numbers appear but are different from the ones shown above, then the respective files have not been installed correctly and the may correspond to a previous version.
 
 ## Bug reports
 
@@ -129,4 +168,4 @@ reproduce the problem; so please include:
    Edition 2.13, 4350 pages, 2006.
 
 
-July 28, 2022
+September 29, 2022

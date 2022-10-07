@@ -47,7 +47,7 @@ directory. Call Magma and then write:
 ```
 in the Magma command line.
 
-To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
+To install "Z2Z4-Additive Codes" permanent (as a Magma Package) on Linux:
 
 1. Unpack the archive file in a directory <code>$DIR</code>.
 
@@ -108,31 +108,33 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
       export MAGMA_USER_SPEC
    ```
 
-8. In order to check that the package has been installed correctly, run Magma in a terminal window and try to run the following lines:
+To do the installation on Windows OS, follow the above items from 1 to 5 (in item 4, use "copy" instead of "cp"; and in item 5, use "type nul >>" instead of "touch" if a spec file does not exist). Finally, edit the system environment variables by adding MAGMA_USER_SPEC and set it to the spec file.
 
-   ```
-      Z2Z4AdditiveCodes_version();
-      Z2Z4CodeConstructions_version();
-      Z2Z4CoveringRadius_version();
-      Z2Z4Cyclic_version();
-      Z2Z4Decode_version();
-      Z2Z4MinimumWeight_version();
-      Z2Z4StandardForm_version();
-   ```
-   
-   If the installation has been successful, Magma should return the following lines, one for each function, respectively:
+In order to check that the package has been installed correctly, run Magma in a terminal window and try to run the following lines:
 
-   ```
-      [4,6]
-      [1,3]
-      [1,5]
-      [1,5]
-      [2,2]
-      [2,4]
-      [2,1]
-   ```
+```
+   Z2Z4AdditiveCodes_version();
+   Z2Z4CodeConstructions_version();
+   Z2Z4CoveringRadius_version();
+   Z2Z4Cyclic_version();
+   Z2Z4Decode_version();
+   Z2Z4MinimumWeight_version();
+   Z2Z4StandardForm_version();
+```
 
-   If the numbers appear but are different from the ones shown above, then the respective files have not been installed correctly and they may correspond to a previous version.
+If the installation has been successful, Magma should return the following lines, one for each function, respectively:
+
+```
+   [4,6]
+   [1,3]
+   [1,5]
+   [1,5]
+   [2,2]
+   [2,4]
+   [2,1]
+```
+
+If the numbers appear but are different from the ones shown above, then the respective files have not been installed correctly and they may correspond to a previous version.
 
 ## Bug reports
 

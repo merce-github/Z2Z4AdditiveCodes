@@ -50,7 +50,7 @@ directory. Call Magma and then write:
 
 in the Magma command line.
 
-To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
+To install "Z2Z4-Additive Codes" permanent (as a Magma Package) on Linux:
 
 1. Unpack the archive file in a directory $DIR.
 
@@ -100,8 +100,13 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
      MAGMA_USER_SPEC="$HOME/UserPackages/spec"
      export MAGMA_USER_SPEC
 
-8. In order to check that the package has been installed correctly,
-   run magma in a terminal window and try to run the following lines:
+To do the installation on Windows OS, follow the above items from 1 to 5 (in item 4, 
+use "copy" instead of "cp"; and in item 5, use "type nul >>" instead of "touch" if a
+spec file does not exist). Finally, edit the system environment variables by adding
+MAGMA_USER_SPEC and set it to the spec file.
+
+In order to check that the package has been installed correctly,
+run magma in a terminal window and try to run the following lines:
    
      Z2Z4AdditiveCodes_version();
      Z2Z4CodeConstructions_version();
@@ -111,8 +116,8 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
      Z2Z4MinimumWeight_version();
      Z2Z4StandardForm_version();
 
-   If the installation has been successful, magma should return the
-   following lines, one for each function, respectively:
+If the installation has been successful, magma should return the
+following lines, one for each function, respectively:
 
      [4,6]
      [1,3]
@@ -122,9 +127,9 @@ To install "Z2Z4-Additive Codes" permanent (as a Magma Package):
      [2,4]
      [2,1]
   
-   If the numbers appear but are different from the ones shown above,
-   then the respective files have not been installed correctly and
-   they may correspond to a previous version.
+If the numbers appear but are different from the ones shown above,
+then the respective files have not been installed correctly and
+they may correspond to a previous version.
 
 
                              Bug reports
@@ -159,4 +164,4 @@ reproduce the problem; so please include:
    Edition 2.13, 4350 pages, 2006.
 
 
-September 29, 2022
+October 04, 2022

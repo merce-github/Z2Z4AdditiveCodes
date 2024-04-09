@@ -18,7 +18,7 @@ by  the  Combinatorics, Coding and Security Group (CCSG) within
 the  Department of  Information  and Communications Engineering
 (dEIC) at the Autonomous University of Barcelona (UAB).
 
-This version of the package has been developped in Magma version
+This version of the package has been developed in Magma version
 2.26-8.
 
 
